@@ -3,7 +3,7 @@ const {UserModel} = require('../models/userModel')
 const userRouter = express.Router()
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-
+require('dotenv').config()
 
 // Signup route
 userRouter.post('/signup', async (req, res) => {
@@ -50,7 +50,7 @@ userRouter.post('/signup', async (req, res) => {
 		return res.status(401).json({ error: 'Invalid email or password' });
 	  }
   
-	  const token = jwt.sign({ userId: user._id }, 'secret_key', {
+	  const token = jwt.sign({ userId: user._id }, process.env.secretKey, {
 		expiresIn: '1h', // Token expires in 1 hour
 	  });
   

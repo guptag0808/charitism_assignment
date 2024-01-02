@@ -1,13 +1,14 @@
 
 const jwt = require('jsonwebtoken')
 const {UserModel} = require('../models/userModel')
+require('dotenv').config()
 const authentication  =async(req,res,next)=>{
 	const token = req.headers.authorization
 	try{
 		if(!token){
 		return	res.send({"msg":"Please Login First"})
 		}
-		var decoded = await jwt.verify(token, 'secret_key')
+		var decoded = await jwt.verify(token, process.env.secretKey)
 		if(decoded){
 			const userId = decoded.userId  
 			const user = await UserModel.findById(userId)

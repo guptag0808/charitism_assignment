@@ -9,7 +9,6 @@ A simple Todo app with Node.js, Express, MongoDB, and Mongoose.
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Routes](#api-routes)
-- [Frontend](#frontend)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -20,7 +19,7 @@ A simple Todo app with Node.js, Express, MongoDB, and Mongoose.
 - MVC (Model-View-Controller) structure
 - Express for backend
 - MongoDB for data storage
-- EJS for frontend templating
+
 
 ## Prerequisites
 
@@ -41,18 +40,55 @@ Before you begin, ensure you have the following installed:
 - npm install
 
 ## Usage
-Visit http://localhost:3000/signup to create a new user.
-Visit http://localhost:3000/login to log in.
-Once logged in, you can access the Todo app at http://localhost:3000/todos.
+- Visit http://localhost:3000/signup to create a new user.
+- Visit http://localhost:3000/login to log in.
+- Once logged in, you can access the Todo app at http://localhost:3000/todos.
 
  ## API Routes
 The following API routes are available:
+ - GET /todo - Get all todos for everyone without login
+ - GET /todo/mytodo - Get all todos for the logged-in user.
+ - POST /todo/create - Create a new todo.
+ - GET /todo/:id - Get details of a specific todo.
+ - PUT /todo/:id - Update the details of a specific todo.
+ - DELETE /todo/:id - Delete a specific todo.
 
- - GET /todos - Get all todos for the logged-in user.
- - POST /todos - Create a new todo.
- - GET /todos/:id - Get details of a specific todo.
- - PUT /todos/:id - Update the details of a specific todo.
- - DELETE /todos/:id - Delete a specific todo.
+ ### `POST /signup`
+
+For signup.
+
+#### Request
+
+- **Endpoint:** `/signup`
+- **Method:** `POST`
+- **Request Body:**
+
+  ```json
+  {
+    "name":"Raj",
+	"email":"raj@gmail.com",
+	"password":"raj"
+  }
+   ### `POST /signup`
+
+For Login
+
+#### Request
+
+- **Endpoint:** `/login`
+- **Method:** `POST`
+- **Request Body:**
+
+  ```json
+  {
+    
+	"email":"raj@gmail.com",
+	"password":"raj"
+  }
+ 
+ ### Authentication
+  - Paas the generated token to headers
+ 
 
  ### `POST /todos`
 
@@ -60,7 +96,7 @@ Create a new todo.
 
 #### Request
 
-- **Endpoint:** `/todos`
+- **Endpoint:** `/todo/create`
 - **Method:** `POST`
 - **Request Body:**
 
@@ -69,3 +105,43 @@ Create a new todo.
     "task": "string",
 	"compeleted": true
   }
+
+### `GET /todos`
+
+Get all new todos.
+
+#### Request
+
+- **Endpoint:** `/todo`
+- **Method:** `GET`
+
+
+  ### `DELETE /todos`
+
+Delete  todo.
+
+#### Request
+
+- **Endpoint:** `/todo/:Id`
+- **Method:** `DELETE`
+
+
+ ### `POST /todos`
+
+Update  todo.
+
+#### Request
+
+- **Endpoint:** `/todo/:id`
+- **Method:** `UPDATE`
+
+ ### `POST /todos`
+
+Get all todo of login users.
+
+#### Request
+
+- **Endpoint:** `/todo/mytodo`
+- **Method:** `GET`
+
+
