@@ -5,13 +5,13 @@ const app= express()
 const PORT= 4000
 const {userRouter} = require('./Routes/userRoutes')
 const router = require('./Routes/todoRoutes')
+const {authentication} = require("./middleware/authentication")
 //parsing the body data
 app.use(express.json())
 
-app.get("/",(req,res)=>{
-	res.send('Home')
-})
 app.use("/",userRouter)
+// All routes are protected
+app.use(authentication)
 app.use("/todo",router)
 
 app.listen(PORT,async()=>{

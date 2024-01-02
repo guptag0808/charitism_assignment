@@ -15,6 +15,6 @@ const todoSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
-});
+},{versionKey:false});
 const TodoModel =mongoose.model('Todo', todoSchema)
 module.exports = {TodoModel};
