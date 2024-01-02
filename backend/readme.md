@@ -53,3 +53,19 @@ The following API routes are available:
  - GET /todos/:id - Get details of a specific todo.
  - PUT /todos/:id - Update the details of a specific todo.
  - DELETE /todos/:id - Delete a specific todo.
+
+ ### `POST /todos`
+
+Create a new todo.
+
+#### Request
+
+- **Endpoint:** `/todos`
+- **Method:** `POST`
+- **Request Body:**
+
+  ```json
+  {
+    "task": "string",
+	"compeleted": true
+  }
