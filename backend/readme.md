@@ -33,16 +33,18 @@ Before you begin, ensure you have the following installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/todo-app.git
-   cd todo-app
+   git clone https://github.com/guptag0808/charitism_assignment.git
+   cd backend
 
 ## Install Dependancy
 - npm install
 
+## Deploy Link
+- Visit https://todo-backend-app-i82u.onrender.com
 ## Usage
-- Visit http://localhost:3000/signup to create a new user.
-- Visit http://localhost:3000/login to log in.
-- Once logged in, you can access the Todo app at http://localhost:3000/todos.
+- Visit https://todo-backend-app-i82u.onrender.com/signup to create a new user.
+- Visit https://todo-backend-app-i82u.onrender.com/login to log in.
+- Once logged in, you can access the Todo app at https://todo-backend-app-i82u.onrender.com/todo.
 
  ## API Routes
 The following API routes are available:
@@ -69,7 +71,7 @@ For signup.
 	"email":"raj@gmail.com",
 	"password":"raj"
   }
-   ### `POST /signup`
+  
 
 For Login
 
