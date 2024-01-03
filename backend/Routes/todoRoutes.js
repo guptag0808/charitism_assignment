@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const {TodoModel} = require('../models/todoModel');
-// const {UserModel} = require("../models/userModel")
+
 
 // Index Route
 router.get('/mytodo', async (req, res) => {

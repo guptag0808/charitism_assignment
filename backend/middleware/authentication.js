@@ -9,13 +9,13 @@ const authentication  =async(req,res,next)=>{
 		return	res.send({"msg":"Please Login First"})
 		}
 		var decoded = await jwt.verify(token, process.env.secretKey)
-		if(decoded){
-			const userId = decoded.userId  
+		if(!decoded){
+		 return	res.status(400).send({"msg":"Invalid Token"})
+		 }
+		const userId = decoded.userId  
 			const user = await UserModel.findById(userId)
 			 req.userId=userId
 			 req.user  = user
-			
-		}
 		next()
 
 	}catch(err){
