@@ -6,6 +6,7 @@ const PORT= 4000
 const {userRouter} = require('./Routes/userRoutes')
 const router = require('./Routes/todoRoutes')
 const {authentication} = require("./middleware/authentication")
+
 //parsing the body data
 app.use(express.json())
 

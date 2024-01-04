@@ -2,10 +2,13 @@
 const express = require('express');
 const router = express.Router();
 const {TodoModel} = require('../models/todoModel');
+const rateLimitMiddleware = require('../middleware/rateLimit')
+
+// Apply the rate limiting middleware to all requests.
 
 
 // Index Route
-router.get('/mytodo', async (req, res) => {
+router.get('/mytodo',rateLimitMiddleware, async (req, res) => {
 	const userId= req.userId
 	console.log(userId)
   try {
@@ -14,7 +17,7 @@ router.get('/mytodo', async (req, res) => {
 	if(!todos.length>0){
 		return res.send({"msg":"No todo are there"})
 	}
-    res.status(200).json(todos);
+    res.status(200).send({"msg":todos});
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -23,7 +26,7 @@ router.get('/mytodo', async (req, res) => {
 
 //all Todo
 
-router.get("/",async(req,res)=>{
+router.get("/",rateLimitMiddleware,async(req,res)=>{
 	try{
 		const allTodo = await TodoModel.find()
 		res.send({"msg":allTodo})
@@ -47,7 +50,7 @@ router.post('/create', async (req, res) => {
 });
 
 // Read Route
-router.get('/:id', async (req, res) => {
+router.get('/:id',rateLimitMiddleware, async (req, res) => {
   try {
     const todo = await TodoModel.findById(req.params.id);
     if (!todo) {
